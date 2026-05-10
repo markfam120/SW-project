@@ -1,0 +1,92 @@
+package project.sw;
+
+import java.awt.BorderLayout;
+
+public class MainDashboard extends javax.swing.JFrame {
+
+    private HomePanel homePanel;
+    private AddPanel addPanel;
+    private UpdatePanel updatePanel;
+    private DeletePanel deletePanel;
+    private SearchPanel searchPanel;
+
+    public MainDashboard() {
+        initComponents();
+        
+        homePanel = new HomePanel();
+        addPanel = new AddPanel();
+        updatePanel = new UpdatePanel();
+        deletePanel = new DeletePanel();
+        searchPanel = new SearchPanel();
+        
+        tabHome.add(homePanel, BorderLayout.CENTER);
+        tabAdd.add(addPanel, BorderLayout.CENTER);
+        tabUpdate.add(updatePanel, BorderLayout.CENTER);
+        tabDelete.add(deletePanel, BorderLayout.CENTER);
+        tabSearch.add(searchPanel, BorderLayout.CENTER);
+        
+        // Add a listener to refresh home table when switching back to Home tab
+        tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                if (tabbedPane.getSelectedIndex() == 0) {
+                    homePanel.loadData();
+                }
+            }
+        });
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        tabbedPane = new javax.swing.JTabbedPane();
+        tabHome = new javax.swing.JPanel();
+        tabAdd = new javax.swing.JPanel();
+        tabUpdate = new javax.swing.JPanel();
+        tabDelete = new javax.swing.JPanel();
+        tabSearch = new javax.swing.JPanel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("College Admission - Main Dashboard");
+        setMinimumSize(new java.awt.Dimension(750, 500));
+        getContentPane().setLayout(null);
+
+        tabHome.setLayout(new java.awt.BorderLayout());
+        tabbedPane.addTab("Home", tabHome);
+
+        tabAdd.setLayout(new java.awt.BorderLayout());
+        tabbedPane.addTab("Add", tabAdd);
+
+        tabUpdate.setLayout(new java.awt.BorderLayout());
+        tabbedPane.addTab("Update", tabUpdate);
+
+        tabDelete.setLayout(new java.awt.BorderLayout());
+        tabbedPane.addTab("Delete", tabDelete);
+
+        tabSearch.setLayout(new java.awt.BorderLayout());
+        tabbedPane.addTab("Search", tabSearch);
+
+        getContentPane().add(tabbedPane);
+        tabbedPane.setBounds(10, 10, 700, 420);
+
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
+
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainDashboard().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel tabAdd;
+    private javax.swing.JPanel tabDelete;
+    private javax.swing.JPanel tabHome;
+    private javax.swing.JPanel tabSearch;
+    private javax.swing.JPanel tabUpdate;
+    private javax.swing.JTabbedPane tabbedPane;
+    // End of variables declaration//GEN-END:variables
+}
