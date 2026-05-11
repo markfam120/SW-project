@@ -39,7 +39,7 @@ public class registration extends javax.swing.JFrame {
         lblMajor = new javax.swing.JLabel();
         lblGpa = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        txtGpa1 = new javax.swing.JTextField();
+        txtMajor = new javax.swing.JTextField();
         lblGpa1 = new javax.swing.JLabel();
         userpassword_txt = new javax.swing.JPasswordField();
         male = new javax.swing.JRadioButton();
@@ -52,7 +52,6 @@ public class registration extends javax.swing.JFrame {
 
         lblTitle.setBackground(new java.awt.Color(255, 255, 255));
         lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        lblTitle.setForeground(new java.awt.Color(0, 0, 0));
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/sw/icons8-registration-24.png"))); // NOI18N
         lblTitle.setText("Registration");
@@ -66,8 +65,6 @@ public class registration extends javax.swing.JFrame {
         jPanel2.add(lblId);
         lblId.setBounds(30, 150, 80, 25);
 
-        txtId.setBackground(new java.awt.Color(255, 255, 255));
-        txtId.setForeground(new java.awt.Color(0, 0, 0));
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
@@ -81,9 +78,6 @@ public class registration extends javax.swing.JFrame {
         lblFirstName.setText("First Name:");
         jPanel2.add(lblFirstName);
         lblFirstName.setBounds(30, 70, 80, 25);
-
-        txtFirstName.setBackground(new java.awt.Color(255, 255, 255));
-        txtFirstName.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(txtFirstName);
         txtFirstName.setBounds(130, 70, 200, 25);
 
@@ -92,9 +86,6 @@ public class registration extends javax.swing.JFrame {
         lblLastName.setText("Last Name:");
         jPanel2.add(lblLastName);
         lblLastName.setBounds(30, 110, 80, 25);
-
-        txtLastName.setBackground(new java.awt.Color(255, 255, 255));
-        txtLastName.setForeground(new java.awt.Color(0, 0, 0));
         jPanel2.add(txtLastName);
         txtLastName.setBounds(130, 110, 200, 25);
 
@@ -110,9 +101,7 @@ public class registration extends javax.swing.JFrame {
         jPanel2.add(lblGpa);
         lblGpa.setBounds(30, 270, 80, 25);
 
-        btnAdd.setBackground(new java.awt.Color(255, 255, 255));
         btnAdd.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(0, 0, 0));
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/sw/login_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png"))); // NOI18N
         btnAdd.setText("Submit");
         btnAdd.setOpaque(true);
@@ -124,15 +113,13 @@ public class registration extends javax.swing.JFrame {
         jPanel2.add(btnAdd);
         btnAdd.setBounds(150, 310, 110, 35);
 
-        txtGpa1.setBackground(new java.awt.Color(255, 255, 255));
-        txtGpa1.setForeground(new java.awt.Color(0, 0, 0));
-        txtGpa1.addActionListener(new java.awt.event.ActionListener() {
+        txtMajor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGpa1ActionPerformed(evt);
+                txtMajorActionPerformed(evt);
             }
         });
-        jPanel2.add(txtGpa1);
-        txtGpa1.setBounds(130, 230, 200, 25);
+        jPanel2.add(txtMajor);
+        txtMajor.setBounds(130, 230, 200, 25);
 
         lblGpa1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblGpa1.setForeground(new java.awt.Color(255, 255, 255));
@@ -140,8 +127,6 @@ public class registration extends javax.swing.JFrame {
         jPanel2.add(lblGpa1);
         lblGpa1.setBounds(30, 230, 80, 25);
 
-        userpassword_txt.setBackground(new java.awt.Color(255, 255, 255));
-        userpassword_txt.setForeground(new java.awt.Color(0, 0, 0));
         userpassword_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userpassword_txtActionPerformed(evt);
@@ -153,7 +138,6 @@ public class registration extends javax.swing.JFrame {
         male.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(male);
         male.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        male.setForeground(new java.awt.Color(0, 0, 0));
         male.setText("male");
         male.setOpaque(true);
         male.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +151,6 @@ public class registration extends javax.swing.JFrame {
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
         jRadioButton2.setText("female");
         jRadioButton2.setOpaque(true);
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +202,7 @@ public class registration extends javax.swing.JFrame {
             txtId.getText(),
             password,
             gender,
-            txtGpa1.getText()
+            txtMajor.getText()
 
     );
 
@@ -233,7 +216,7 @@ public class registration extends javax.swing.JFrame {
         txtFirstName.setText("");
         txtLastName.setText("");
         txtId.setText("");
-        txtGpa1.setText("");
+        txtMajor.setText("");
         userpassword_txt.setText("");
 
         buttonGroup1.clearSelection();
@@ -245,9 +228,9 @@ public class registration extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void txtGpa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGpa1ActionPerformed
+    private void txtMajorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMajorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtGpa1ActionPerformed
+    }//GEN-LAST:event_txtMajorActionPerformed
 
     private void userpassword_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userpassword_txtActionPerformed
         // TODO add your handling code here:
@@ -310,9 +293,9 @@ public class registration extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField txtFirstName;
-    private javax.swing.JTextField txtGpa1;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtMajor;
     private javax.swing.JPasswordField userpassword_txt;
     // End of variables declaration//GEN-END:variables
 }
