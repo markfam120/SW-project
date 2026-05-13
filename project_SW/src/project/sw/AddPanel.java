@@ -136,7 +136,7 @@ public class AddPanel extends javax.swing.JPanel {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "BIS" }));
         add(jComboBox1);
-        jComboBox1.setBounds(130, 230, 200, 22);
+        jComboBox1.setBounds(130, 230, 200, 25);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed

@@ -17,8 +17,8 @@ public class UpdatePanel extends javax.swing.JPanel {
         txtId.setText("");
         txtFirstName.setText("");
         txtLastName.setText("");
-        txtMajor.setText("");
-        txtPassword.setText("");
+        jComboBox1.setSelectedIndex(0);
+        userpassword_txt.setText("");
         buttonGroup1.clearSelection();
     }
     @SuppressWarnings("unchecked")
@@ -35,13 +35,13 @@ public class UpdatePanel extends javax.swing.JPanel {
         lblLastName = new javax.swing.JLabel();
         txtLastName = new javax.swing.JTextField();
         lblMajor = new javax.swing.JLabel();
-        txtMajor = new javax.swing.JTextField();
         lblGender = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         male = new javax.swing.JRadioButton();
         female = new javax.swing.JRadioButton();
         lblPassword = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        userpassword_txt = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(0, 102, 153));
         setLayout(null);
@@ -57,15 +57,10 @@ public class UpdatePanel extends javax.swing.JPanel {
         lblId.setText("National ID:");
         add(lblId);
         lblId.setBounds(30, 70, 100, 25);
-
-        txtId.setBackground(new java.awt.Color(255, 255, 255));
-        txtId.setForeground(new java.awt.Color(0, 0, 0));
         add(txtId);
         txtId.setBounds(130, 70, 200, 25);
 
-        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
         btnSearch.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnSearch.setForeground(new java.awt.Color(0, 0, 0));
         btnSearch.setText("Fetch Data");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,9 +74,6 @@ public class UpdatePanel extends javax.swing.JPanel {
         lblFirstName.setText("First Name:");
         add(lblFirstName);
         lblFirstName.setBounds(30, 110, 80, 25);
-
-        txtFirstName.setBackground(new java.awt.Color(255, 255, 255));
-        txtFirstName.setForeground(new java.awt.Color(0, 0, 0));
         add(txtFirstName);
         txtFirstName.setBounds(130, 110, 200, 25);
 
@@ -89,9 +81,6 @@ public class UpdatePanel extends javax.swing.JPanel {
         lblLastName.setText("Last Name:");
         add(lblLastName);
         lblLastName.setBounds(30, 150, 80, 25);
-
-        txtLastName.setBackground(new java.awt.Color(255, 255, 255));
-        txtLastName.setForeground(new java.awt.Color(0, 0, 0));
         add(txtLastName);
         txtLastName.setBounds(130, 150, 200, 25);
 
@@ -100,25 +89,12 @@ public class UpdatePanel extends javax.swing.JPanel {
         add(lblMajor);
         lblMajor.setBounds(30, 190, 80, 25);
 
-        txtMajor.setBackground(new java.awt.Color(255, 255, 255));
-        txtMajor.setForeground(new java.awt.Color(0, 0, 0));
-        add(txtMajor);
-        txtMajor.setBounds(130, 190, 200, 25);
-
         lblGender.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblGender.setText("Gender:");
         add(lblGender);
         lblGender.setBounds(30, 280, 80, 25);
 
-        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
-        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
-        txtPassword.setToolTipText("");
-        add(txtPassword);
-        txtPassword.setBounds(130, 230, 200, 25);
-
-        btnUpdate.setBackground(new java.awt.Color(255, 255, 255));
         btnUpdate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnUpdate.setForeground(new java.awt.Color(0, 0, 0));
         btnUpdate.setText("Update Student");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,6 +120,12 @@ public class UpdatePanel extends javax.swing.JPanel {
         lblPassword.setText("Password:");
         add(lblPassword);
         lblPassword.setBounds(30, 230, 80, 25);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "BIS" }));
+        add(jComboBox1);
+        jComboBox1.setBounds(130, 190, 200, 25);
+        add(userpassword_txt);
+        userpassword_txt.setBounds(130, 230, 200, 25);
     }// </editor-fold>//GEN-END:initComponents
 
    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,9 +160,9 @@ public class UpdatePanel extends javax.swing.JPanel {
 
         txtLastName.setText(target.getLastName());
 
-        txtMajor.setText(target.getMajor());
+        jComboBox1.setSelectedItem(target.getMajor());
 
-        txtPassword.setText(target.getPassword());
+        userpassword_txt.setText(target.getPassword());
 
         if (target.getGender().equalsIgnoreCase("Male")) {
 
@@ -216,8 +198,9 @@ public class UpdatePanel extends javax.swing.JPanel {
     if(txtFirstName.getText().trim().isEmpty() ||
        txtLastName.getText().trim().isEmpty() ||
        txtId.getText().trim().isEmpty() ||
-       txtPassword.getText().trim().isEmpty() ||
-       txtMajor.getText().trim().isEmpty()){
+       new String(userpassword_txt.getPassword())
+        .trim().isEmpty() ||
+       jComboBox1.getSelectedItem() == null){
 
         JOptionPane.showMessageDialog(this,
                 "Please fill all fields");
@@ -229,9 +212,9 @@ public class UpdatePanel extends javax.swing.JPanel {
         txtFirstName.getText(),
         txtLastName.getText(),
         txtId.getText(),
-        txtPassword.getText(),
+        new String(userpassword_txt.getPassword()),
         gender,
-        txtMajor.getText()
+        jComboBox1.getSelectedItem().toString()
 
     );
 
@@ -254,6 +237,7 @@ public class UpdatePanel extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdate;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton female;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblId;
@@ -265,8 +249,7 @@ public class UpdatePanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtMajor;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField userpassword_txt;
     // End of variables declaration//GEN-END:variables
 
     public static void main(String args[]) {

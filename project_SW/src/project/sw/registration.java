@@ -29,7 +29,6 @@ public class registration extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
-        lblTitle = new javax.swing.JLabel();
         lblId = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         lblFirstName = new javax.swing.JLabel();
@@ -41,23 +40,15 @@ public class registration extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         lblGpa1 = new javax.swing.JLabel();
         userpassword_txt = new javax.swing.JPasswordField();
-        male = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        male = new javax.swing.JRadioButton();
+        lblTitle = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 153));
         jPanel2.setLayout(null);
-
-        lblTitle.setBackground(new java.awt.Color(255, 255, 255));
-        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/sw/icons8-registration-24.png"))); // NOI18N
-        lblTitle.setText("Registration");
-        lblTitle.setOpaque(true);
-        jPanel2.add(lblTitle);
-        lblTitle.setBounds(90, 10, 200, 30);
 
         lblId.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblId.setText("National ID:");
@@ -91,8 +82,8 @@ public class registration extends javax.swing.JFrame {
         jPanel2.add(lblMajor);
         lblMajor.setBounds(30, 190, 80, 25);
 
-        lblGpa.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblGpa.setText("Gender");
+        lblGpa.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblGpa.setText("Gender:");
         jPanel2.add(lblGpa);
         lblGpa.setBounds(30, 270, 80, 25);
 
@@ -121,35 +112,37 @@ public class registration extends javax.swing.JFrame {
         jPanel2.add(userpassword_txt);
         userpassword_txt.setBounds(130, 190, 200, 25);
 
-        male.setBackground(new java.awt.Color(255, 255, 255));
-        buttonGroup1.add(male);
-        male.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        male.setText("male");
-        male.setOpaque(true);
-        male.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maleActionPerformed(evt);
-            }
-        });
-        jPanel2.add(male);
-        male.setBounds(130, 270, 80, 22);
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "BIS" }));
+        jPanel2.add(jComboBox1);
+        jComboBox1.setBounds(130, 230, 200, 25);
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jRadioButton2.setText("female");
-        jRadioButton2.setOpaque(true);
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);
             }
         });
         jPanel2.add(jRadioButton2);
-        jRadioButton2.setBounds(250, 270, 90, 22);
+        jRadioButton2.setBounds(250, 270, 70, 22);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "BIS" }));
-        jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(130, 230, 200, 22);
+        buttonGroup1.add(male);
+        male.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        male.setText("male");
+        male.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maleActionPerformed(evt);
+            }
+        });
+        jPanel2.add(male);
+        male.setBounds(130, 270, 60, 22);
+
+        lblTitle.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lblTitle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/sw/icons8-registration-24.png"))); // NOI18N
+        lblTitle.setText("Registration");
+        jPanel2.add(lblTitle);
+        lblTitle.setBounds(30, 20, 200, 24);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -265,13 +258,13 @@ public class registration extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userpassword_txtActionPerformed
 
-    private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maleActionPerformed
-
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void maleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_maleActionPerformed
 
     /**
      * @param args the command line arguments

@@ -58,38 +58,30 @@ public class loginform extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/sw/person_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png"))); // NOI18N
         jLabel1.setText("Username/ID");
         jLabel1.setToolTipText("");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel1.setOpaque(true);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/sw/lock_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png"))); // NOI18N
         jLabel2.setText("Password");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel2.setOpaque(true);
 
-        userpassword_txt.setBackground(new java.awt.Color(255, 255, 255));
         userpassword_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userpassword_txtActionPerformed(evt);
             }
         });
 
-        username_txt.setBackground(new java.awt.Color(255, 255, 255));
         username_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 username_txtActionPerformed(evt);
             }
         });
 
-        login_btn.setBackground(new java.awt.Color(255, 255, 255));
         login_btn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        login_btn.setForeground(new java.awt.Color(0, 0, 0));
         login_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/sw/login_24dp_1F1F1F_FILL1_wght400_GRAD0_opsz24.png"))); // NOI18N
         login_btn.setText("Login");
         login_btn.setOpaque(true);
@@ -99,9 +91,7 @@ public class loginform extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/sw/icons8-registration-24.png"))); // NOI18N
         jButton1.setText("registrat");
         jButton1.setActionCommand("registration");
