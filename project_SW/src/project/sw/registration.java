@@ -39,11 +39,11 @@ public class registration extends javax.swing.JFrame {
         lblMajor = new javax.swing.JLabel();
         lblGpa = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        txtMajor = new javax.swing.JTextField();
         lblGpa1 = new javax.swing.JLabel();
         userpassword_txt = new javax.swing.JPasswordField();
         male = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,7 +60,6 @@ public class registration extends javax.swing.JFrame {
         lblTitle.setBounds(90, 10, 200, 30);
 
         lblId.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblId.setForeground(new java.awt.Color(255, 255, 255));
         lblId.setText("National ID:");
         jPanel2.add(lblId);
         lblId.setBounds(30, 150, 80, 25);
@@ -74,7 +73,6 @@ public class registration extends javax.swing.JFrame {
         txtId.setBounds(130, 150, 200, 25);
 
         lblFirstName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblFirstName.setForeground(new java.awt.Color(255, 255, 255));
         lblFirstName.setText("First Name:");
         jPanel2.add(lblFirstName);
         lblFirstName.setBounds(30, 70, 80, 25);
@@ -82,7 +80,6 @@ public class registration extends javax.swing.JFrame {
         txtFirstName.setBounds(130, 70, 200, 25);
 
         lblLastName.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblLastName.setForeground(new java.awt.Color(255, 255, 255));
         lblLastName.setText("Last Name:");
         jPanel2.add(lblLastName);
         lblLastName.setBounds(30, 110, 80, 25);
@@ -90,13 +87,11 @@ public class registration extends javax.swing.JFrame {
         txtLastName.setBounds(130, 110, 200, 25);
 
         lblMajor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblMajor.setForeground(new java.awt.Color(255, 255, 255));
-        lblMajor.setText("Password  :");
+        lblMajor.setText("Password:");
         jPanel2.add(lblMajor);
         lblMajor.setBounds(30, 190, 80, 25);
 
         lblGpa.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        lblGpa.setForeground(new java.awt.Color(255, 255, 255));
         lblGpa.setText("Gender");
         jPanel2.add(lblGpa);
         lblGpa.setBounds(30, 270, 80, 25);
@@ -113,16 +108,7 @@ public class registration extends javax.swing.JFrame {
         jPanel2.add(btnAdd);
         btnAdd.setBounds(150, 310, 110, 35);
 
-        txtMajor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMajorActionPerformed(evt);
-            }
-        });
-        jPanel2.add(txtMajor);
-        txtMajor.setBounds(130, 230, 200, 25);
-
         lblGpa1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblGpa1.setForeground(new java.awt.Color(255, 255, 255));
         lblGpa1.setText("Major:");
         jPanel2.add(lblGpa1);
         lblGpa1.setBounds(30, 230, 80, 25);
@@ -161,6 +147,10 @@ public class registration extends javax.swing.JFrame {
         jPanel2.add(jRadioButton2);
         jRadioButton2.setBounds(250, 270, 90, 22);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "BIS" }));
+        jPanel2.add(jComboBox1);
+        jComboBox1.setBounds(130, 230, 200, 22);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -198,15 +188,14 @@ public class registration extends javax.swing.JFrame {
     if(txtFirstName.getText().trim().isEmpty() ||
        txtLastName.getText().trim().isEmpty() ||
        txtId.getText().trim().isEmpty() ||
-       txtMajor.getText().trim().isEmpty() ||
+       jComboBox1.getSelectedItem() == null||
        password.trim().isEmpty()){
 
         JOptionPane.showMessageDialog(this,
                 "Please fill all fields");
         return;
     }
-    
-    
+  
     try {
 
     Connection con =
@@ -246,7 +235,7 @@ public class registration extends javax.swing.JFrame {
             txtId.getText(),
             password,
             gender,
-            txtMajor.getText()
+            jComboBox1.getSelectedItem().toString()
 
     );
 
@@ -260,7 +249,7 @@ public class registration extends javax.swing.JFrame {
         txtFirstName.setText("");
         txtLastName.setText("");
         txtId.setText("");
-        txtMajor.setText("");
+        jComboBox1.setSelectedIndex(0);
         userpassword_txt.setText("");
 
         buttonGroup1.clearSelection();
@@ -271,10 +260,6 @@ public class registration extends javax.swing.JFrame {
                 "Registration Failed!");
     }
     }//GEN-LAST:event_btnAddActionPerformed
-
-    private void txtMajorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMajorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMajorActionPerformed
 
     private void userpassword_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userpassword_txtActionPerformed
         // TODO add your handling code here:
@@ -326,6 +311,7 @@ public class registration extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lblFirstName;
@@ -339,7 +325,6 @@ public class registration extends javax.swing.JFrame {
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtMajor;
     private javax.swing.JPasswordField userpassword_txt;
     // End of variables declaration//GEN-END:variables
 }

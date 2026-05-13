@@ -17,7 +17,7 @@ public class AddPanel extends javax.swing.JPanel {
     txtFirstName.setText("");
     txtLastName.setText("");
     txtId.setText("");
-    txtMajor.setText("");
+    jComboBox1.setSelectedIndex(0);
     userpassword_txt.setText("");
     buttonGroup1.clearSelection();
 }
@@ -37,11 +37,11 @@ public class AddPanel extends javax.swing.JPanel {
         lblMajor = new javax.swing.JLabel();
         lblGpa = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        txtMajor = new javax.swing.JTextField();
         lblGpa1 = new javax.swing.JLabel();
         userpassword_txt = new javax.swing.JPasswordField();
         male = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(0, 102, 153));
         setLayout(null);
@@ -99,14 +99,6 @@ public class AddPanel extends javax.swing.JPanel {
         add(btnAdd);
         btnAdd.setBounds(150, 310, 140, 35);
 
-        txtMajor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMajorActionPerformed(evt);
-            }
-        });
-        add(txtMajor);
-        txtMajor.setBounds(130, 230, 200, 25);
-
         lblGpa1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblGpa1.setText("Major:");
         add(lblGpa1);
@@ -141,6 +133,10 @@ public class AddPanel extends javax.swing.JPanel {
         });
         add(jRadioButton2);
         jRadioButton2.setBounds(250, 270, 70, 22);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "BIS" }));
+        add(jComboBox1);
+        jComboBox1.setBounds(130, 230, 200, 22);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
@@ -159,10 +155,6 @@ public class AddPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_maleActionPerformed
 
-    private void txtMajorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMajorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMajorActionPerformed
-
    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {
     String gender = "";
     if (male.isSelected()) {
@@ -175,7 +167,7 @@ public class AddPanel extends javax.swing.JPanel {
     if(txtFirstName.getText().trim().isEmpty() ||
        txtLastName.getText().trim().isEmpty() ||
        txtId.getText().trim().isEmpty() ||
-       txtMajor.getText().trim().isEmpty() ||
+       jComboBox1.getSelectedItem() == null ||
        password.trim().isEmpty()){
 
         JOptionPane.showMessageDialog(this,
@@ -234,7 +226,7 @@ try {
     txtId.getText(),
     password,
     gender,
-    txtMajor.getText()
+    jComboBox1.getSelectedItem().toString()
 
 );
         if (studentDAO.addStudent(s)) {
@@ -259,6 +251,7 @@ try {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblGpa;
@@ -271,7 +264,6 @@ try {
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLastName;
-    private javax.swing.JTextField txtMajor;
     private javax.swing.JPasswordField userpassword_txt;
     // End of variables declaration//GEN-END:variables
 

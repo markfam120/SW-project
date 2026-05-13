@@ -51,7 +51,6 @@ public class HomePanel extends javax.swing.JPanel {
 
         btnRefresh.setBackground(new java.awt.Color(102, 204, 255));
         btnRefresh.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRefresh.setForeground(new java.awt.Color(0, 0, 0));
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project/sw/icons8-refresh-24.png"))); // NOI18N
         btnRefresh.setText("Refresh Table");
         btnRefresh.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -64,7 +63,6 @@ public class HomePanel extends javax.swing.JPanel {
         btnRefresh.setBounds(20, 20, 130, 30);
 
         tableStudents.setAutoCreateRowSorter(true);
-        tableStudents.setForeground(new java.awt.Color(0, 0, 0));
         tableStudents.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
