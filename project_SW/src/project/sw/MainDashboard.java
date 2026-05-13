@@ -13,6 +13,15 @@ public class MainDashboard extends javax.swing.JFrame {
     public MainDashboard() {
         initComponents();
         
+        
+        if (!Session.isLoggedIn) {
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Please login first");
+
+    dispose();
+}
+        
         homePanel = new HomePanel();
         addPanel = new AddPanel();
         updatePanel = new UpdatePanel();

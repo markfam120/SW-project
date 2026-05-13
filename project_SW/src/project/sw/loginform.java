@@ -196,6 +196,7 @@ public class loginform extends javax.swing.JFrame {
         if (loggedInUser != null) {
             String msg = "Welcome " + loggedInUser.getFirstName() + " " + loggedInUser.getLastName();
             JOptionPane.showMessageDialog(this, msg);
+            Session.isLoggedIn = true;
             
             // Open MainDashboard form
             MainDashboard md = new MainDashboard();
