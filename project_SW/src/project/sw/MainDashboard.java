@@ -28,14 +28,17 @@ public class MainDashboard extends javax.swing.JFrame {
         tabDelete.add(deletePanel, BorderLayout.CENTER);
         tabSearch.add(searchPanel, BorderLayout.CENTER);
         
-        // Add a listener to refresh home table when switching back to Home tab
         tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                if (tabbedPane.getSelectedIndex() == 0) {
-                    homePanel.loadData();
-                }
-            }
-        });
+    public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        if (tabbedPane.getSelectedIndex() == 0) {
+            homePanel.loadData();
+        }
+        if (tabbedPane.getSelectedIndex() == 5) {
+            tabbedPane.setSelectedIndex(0);
+            new count_max_min().setVisible(true);
+        }
+    }
+});
     }
 
     @SuppressWarnings("unchecked")
@@ -48,6 +51,7 @@ public class MainDashboard extends javax.swing.JFrame {
         tabUpdate = new javax.swing.JPanel();
         tabDelete = new javax.swing.JPanel();
         tabSearch = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("College Admission - Main Dashboard");
@@ -56,6 +60,7 @@ public class MainDashboard extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         tabbedPane.setBackground(new java.awt.Color(0, 102, 204));
+        tabbedPane.setOpaque(true);
 
         tabHome.setBackground(new java.awt.Color(0, 102, 153));
         tabHome.setLayout(new java.awt.BorderLayout());
@@ -77,8 +82,11 @@ public class MainDashboard extends javax.swing.JFrame {
         tabSearch.setLayout(new java.awt.BorderLayout());
         tabbedPane.addTab("Search", tabSearch);
 
+        jTabbedPane1.setBackground(new java.awt.Color(0, 102, 153));
+        tabbedPane.addTab("Statistics", jTabbedPane1);
+
         getContentPane().add(tabbedPane);
-        tabbedPane.setBounds(0, 0, 630, 510);
+        tabbedPane.setBounds(-10, 0, 630, 510);
 
         pack();
         setLocationRelativeTo(null);
@@ -93,6 +101,7 @@ public class MainDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel tabAdd;
     private javax.swing.JPanel tabDelete;
     private javax.swing.JPanel tabHome;

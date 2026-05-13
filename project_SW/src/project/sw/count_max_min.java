@@ -24,6 +24,7 @@ public class count_max_min extends javax.swing.JFrame {
      */
     public count_max_min() {
         initComponents();
+        
           try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         } catch (ClassNotFoundException ex) {
@@ -55,7 +56,7 @@ public class count_max_min extends javax.swing.JFrame {
         Count_btn.setBackground(new java.awt.Color(255, 255, 255));
         Count_btn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Count_btn.setForeground(new java.awt.Color(0, 0, 0));
-        Count_btn.setText("count");
+        Count_btn.setText("Count_Student");
         Count_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Count_btnActionPerformed(evt);
@@ -65,7 +66,7 @@ public class count_max_min extends javax.swing.JFrame {
         Max_btn.setBackground(new java.awt.Color(255, 255, 255));
         Max_btn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Max_btn.setForeground(new java.awt.Color(0, 0, 0));
-        Max_btn.setText("Max");
+        Max_btn.setText("Max_Major");
         Max_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Max_btnActionPerformed(evt);
@@ -75,7 +76,7 @@ public class count_max_min extends javax.swing.JFrame {
         Min_btn.setBackground(new java.awt.Color(255, 255, 255));
         Min_btn.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         Min_btn.setForeground(new java.awt.Color(0, 0, 0));
-        Min_btn.setText("Min");
+        Min_btn.setText("Min_Major");
         Min_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Min_btnActionPerformed(evt);
@@ -87,23 +88,23 @@ public class count_max_min extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(192, 192, 192)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Count_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Max_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Min_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addGap(144, 144, 144)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Max_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Min_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Count_btn, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+                .addContainerGap(184, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(78, 78, 78)
                 .addComponent(Count_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(47, 47, 47)
                 .addComponent(Max_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(41, 41, 41)
                 .addComponent(Min_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -114,7 +115,7 @@ public class count_max_min extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -154,13 +155,19 @@ public class count_max_min extends javax.swing.JFrame {
         try {
             con = DriverManager.getConnection(url);
             stmt = con.createStatement();
-            String query = "SELECT MAX(CAST(NationalID AS BIGINT)) as max_NationalID FROM Students";
+            
+        
+            String query = "SELECT TOP 1 Major, COUNT(*) as num FROM Students GROUP BY Major ORDER BY num DESC";
+
+            
             result = stmt.executeQuery(query);
 
             if (result.next()) {
+    
                 JOptionPane.showMessageDialog(this,
-                    "max_NationalID = " + result.getLong("max_NationalID"));
-            }
+        
+                        "أكتر قسم: " + result.getString("Major") + " (" + result.getInt("num") + " طالب)");
+}
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         } finally {
@@ -180,13 +187,17 @@ public class count_max_min extends javax.swing.JFrame {
         try {
             con = DriverManager.getConnection(url);
             stmt = con.createStatement();
-            String query = "SELECT MIN(CAST(NationalID AS BIGINT)) as min_NationalID FROM Students";
+            
+            String query = "SELECT TOP 1 Major, COUNT(*) as num FROM Students GROUP BY Major ORDER BY num ASC";
+
             result = stmt.executeQuery(query);
 
             if (result.next()) {
+    
                 JOptionPane.showMessageDialog(this,
-                    "min_NationalID = " + result.getLong("min_NationalID"));
-            }
+        
+                        "أقل قسم: " + result.getString("Major") + " (" + result.getInt("num") + " طالب)");
+}
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         } finally {
