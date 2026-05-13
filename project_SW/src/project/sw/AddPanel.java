@@ -1,4 +1,5 @@
 package project.sw;
+import java.sql.*;
 
 import javax.swing.JOptionPane;
 
@@ -16,7 +17,7 @@ public class AddPanel extends javax.swing.JPanel {
     txtFirstName.setText("");
     txtLastName.setText("");
     txtId.setText("");
-    txtGpa1.setText("");
+    txtMajor.setText("");
     userpassword_txt.setText("");
     buttonGroup1.clearSelection();
 }
@@ -36,7 +37,7 @@ public class AddPanel extends javax.swing.JPanel {
         lblMajor = new javax.swing.JLabel();
         lblGpa = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        txtGpa1 = new javax.swing.JTextField();
+        txtMajor = new javax.swing.JTextField();
         lblGpa1 = new javax.swing.JLabel();
         userpassword_txt = new javax.swing.JPasswordField();
         male = new javax.swing.JRadioButton();
@@ -56,8 +57,6 @@ public class AddPanel extends javax.swing.JPanel {
         add(lblId);
         lblId.setBounds(30, 150, 80, 25);
 
-        txtId.setBackground(new java.awt.Color(255, 255, 255));
-        txtId.setForeground(new java.awt.Color(0, 0, 0));
         txtId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIdActionPerformed(evt);
@@ -70,9 +69,6 @@ public class AddPanel extends javax.swing.JPanel {
         lblFirstName.setText("First Name:");
         add(lblFirstName);
         lblFirstName.setBounds(30, 70, 80, 25);
-
-        txtFirstName.setBackground(new java.awt.Color(255, 255, 255));
-        txtFirstName.setForeground(new java.awt.Color(0, 0, 0));
         add(txtFirstName);
         txtFirstName.setBounds(130, 70, 200, 25);
 
@@ -80,9 +76,6 @@ public class AddPanel extends javax.swing.JPanel {
         lblLastName.setText("Last Name:");
         add(lblLastName);
         lblLastName.setBounds(30, 110, 80, 25);
-
-        txtLastName.setBackground(new java.awt.Color(255, 255, 255));
-        txtLastName.setForeground(new java.awt.Color(0, 0, 0));
         add(txtLastName);
         txtLastName.setBounds(130, 110, 200, 25);
 
@@ -96,9 +89,7 @@ public class AddPanel extends javax.swing.JPanel {
         add(lblGpa);
         lblGpa.setBounds(30, 270, 80, 25);
 
-        btnAdd.setBackground(new java.awt.Color(255, 255, 255));
         btnAdd.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(0, 0, 0));
         btnAdd.setText("Add Student");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,23 +99,19 @@ public class AddPanel extends javax.swing.JPanel {
         add(btnAdd);
         btnAdd.setBounds(150, 310, 140, 35);
 
-        txtGpa1.setBackground(new java.awt.Color(255, 255, 255));
-        txtGpa1.setForeground(new java.awt.Color(0, 0, 0));
-        txtGpa1.addActionListener(new java.awt.event.ActionListener() {
+        txtMajor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtGpa1ActionPerformed(evt);
+                txtMajorActionPerformed(evt);
             }
         });
-        add(txtGpa1);
-        txtGpa1.setBounds(130, 230, 200, 25);
+        add(txtMajor);
+        txtMajor.setBounds(130, 230, 200, 25);
 
         lblGpa1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblGpa1.setText("Major:");
         add(lblGpa1);
         lblGpa1.setBounds(30, 230, 80, 25);
 
-        userpassword_txt.setBackground(new java.awt.Color(255, 255, 255));
-        userpassword_txt.setForeground(new java.awt.Color(0, 0, 0));
         userpassword_txt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userpassword_txtActionPerformed(evt);
@@ -172,9 +159,9 @@ public class AddPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_maleActionPerformed
 
-    private void txtGpa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGpa1ActionPerformed
+    private void txtMajorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMajorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtGpa1ActionPerformed
+    }//GEN-LAST:event_txtMajorActionPerformed
 
    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {
     String gender = "";
@@ -184,6 +171,61 @@ public class AddPanel extends javax.swing.JPanel {
         gender = "Female";
     }
     String password = new String(userpassword_txt.getPassword());
+     // VALIDATION
+    if(txtFirstName.getText().trim().isEmpty() ||
+       txtLastName.getText().trim().isEmpty() ||
+       txtId.getText().trim().isEmpty() ||
+       txtMajor.getText().trim().isEmpty() ||
+       password.trim().isEmpty()){
+
+        JOptionPane.showMessageDialog(this,
+                "Please fill all fields");
+
+        return;
+    }
+    if(!male.isSelected() &&
+   !jRadioButton2.isSelected()){
+
+    JOptionPane.showMessageDialog(this,
+            "Please select gender");
+
+    return;
+    }
+    
+    // DUPLICATE CHECK
+try {
+
+    Connection con =
+            DatabaseConnection.getConnection();
+
+    String checkQuery =
+    "SELECT * FROM Students WHERE NationalID = ?";
+
+    PreparedStatement ps =
+            con.prepareStatement(checkQuery);
+
+    ps.setString(1, txtId.getText());
+
+    ResultSet rs = ps.executeQuery();
+
+    if(rs.next()){
+
+        JOptionPane.showMessageDialog(this,
+                "National ID already exists");
+
+        return;
+    }
+
+} catch (Exception e) {
+
+    JOptionPane.showMessageDialog(this,
+            e.getMessage());
+
+    return;
+}
+    
+    
+    
     try {
         Student s = new Student(
 
@@ -192,7 +234,7 @@ public class AddPanel extends javax.swing.JPanel {
     txtId.getText(),
     password,
     gender,
-    txtGpa1.getText()
+    txtMajor.getText()
 
 );
         if (studentDAO.addStudent(s)) {
@@ -227,9 +269,9 @@ public class AddPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JRadioButton male;
     private javax.swing.JTextField txtFirstName;
-    private javax.swing.JTextField txtGpa1;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextField txtMajor;
     private javax.swing.JPasswordField userpassword_txt;
     // End of variables declaration//GEN-END:variables
 

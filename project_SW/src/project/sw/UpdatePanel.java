@@ -212,7 +212,18 @@ public class UpdatePanel extends javax.swing.JPanel {
 
         gender = "Female";
     }
+     // VALIDATION
+    if(txtFirstName.getText().trim().isEmpty() ||
+       txtLastName.getText().trim().isEmpty() ||
+       txtId.getText().trim().isEmpty() ||
+       txtPassword.getText().trim().isEmpty() ||
+       txtMajor.getText().trim().isEmpty()){
 
+        JOptionPane.showMessageDialog(this,
+                "Please fill all fields");
+
+        return;
+    }
     Student s = new Student(
 
         txtFirstName.getText(),

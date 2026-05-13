@@ -194,6 +194,50 @@ public class registration extends javax.swing.JFrame {
 
     String password =
             new String(userpassword_txt.getPassword());
+     // VALIDATION
+    if(txtFirstName.getText().trim().isEmpty() ||
+       txtLastName.getText().trim().isEmpty() ||
+       txtId.getText().trim().isEmpty() ||
+       txtMajor.getText().trim().isEmpty() ||
+       password.trim().isEmpty()){
+
+        JOptionPane.showMessageDialog(this,
+                "Please fill all fields");
+        return;
+    }
+    
+    
+    try {
+
+    Connection con =
+            DatabaseConnection.getConnection();
+
+    String checkQuery =
+    "SELECT * FROM Students WHERE NationalID = ?";
+
+    PreparedStatement ps =
+            con.prepareStatement(checkQuery);
+
+    ps.setString(1, txtId.getText());
+
+    ResultSet rs = ps.executeQuery();
+
+    if(rs.next()){
+
+        JOptionPane.showMessageDialog(this,
+                "National ID already exists");
+
+        return;
+    }
+
+    } catch (Exception e) {
+
+    JOptionPane.showMessageDialog(this,
+            e.getMessage());
+
+    return;
+    }
+
 
     Student s = new Student(
 
