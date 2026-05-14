@@ -29,6 +29,8 @@ public class MainDashboard extends javax.swing.JFrame {
         tabSearch.add(searchPanel, BorderLayout.CENTER);
         
         tabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
+            
+            
     public void stateChanged(javax.swing.event.ChangeEvent evt) {
         if (tabbedPane.getSelectedIndex() == 0) {
             homePanel.loadData();

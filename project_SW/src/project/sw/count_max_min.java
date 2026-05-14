@@ -166,7 +166,7 @@ public class count_max_min extends javax.swing.JFrame {
     
                 JOptionPane.showMessageDialog(this,
         
-                        "أكتر قسم: " + result.getString("Major") + " (" + result.getInt("num") + " طالب)");
+                        "Max Major: " + result.getString("Major") + " (" + result.getInt("num") + " Students)");
 }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -196,7 +196,7 @@ public class count_max_min extends javax.swing.JFrame {
     
                 JOptionPane.showMessageDialog(this,
         
-                        "أقل قسم: " + result.getString("Major") + " (" + result.getInt("num") + " طالب)");
+                        "Min Major: " + result.getString("Major") + " (" + result.getInt("num") + " Students)");
 }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -231,6 +231,8 @@ public class count_max_min extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new count_max_min().setVisible(true));
+    
+    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

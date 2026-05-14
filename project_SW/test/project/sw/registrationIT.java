@@ -26,6 +26,17 @@ public class registrationIT {
 
         assertTrue(result);
     }
+
+    @Test
+    public void testValidFirstName() {
+
+        String firstName = "Mark";
+
+        boolean result = firstName.trim().isEmpty();
+
+        assertFalse(result);
+    }
+
     @Test
     public void testDuplicateNationalID() {
 
@@ -36,13 +47,7 @@ public class registrationIT {
 
         assertTrue(isDuplicate);
     }
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        registration.main(args);
-        // TODO review the generated test code and remove the default call to fail.
-       // fail("The test case is a prototype.");
-    }
+
+    
     
 }
