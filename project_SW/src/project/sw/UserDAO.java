@@ -29,11 +29,13 @@ public class UserDAO {
 
     public User loginUser(String username, String password) {
 
-    String query =
+
+    // Admin Login
+    String adminQuery =
     "SELECT * FROM admin WHERE Username = ? AND Password = ?";
 
     try (Connection conn = DatabaseConnection.getConnection();
-         PreparedStatement stmt = conn.prepareStatement(query)) {
+         PreparedStatement stmt = conn.prepareStatement(adminQuery)) {
 
         stmt.setString(1, username);
         stmt.setString(2, password);
@@ -56,7 +58,38 @@ public class UserDAO {
     } catch (SQLException ex) {
 
         System.err.println(
-        "Error logging in: " + ex.getMessage());
+        "Error Admin Login: " + ex.getMessage());
+    }
+
+    // Staff Login
+    String staffQuery =
+    "SELECT * FROM staff WHERE Username = ? AND Password = ?";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement stmt = conn.prepareStatement(staffQuery)) {
+
+        stmt.setString(1, username);
+        stmt.setString(2, password);
+
+        try (ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+
+                return new User(
+
+                    rs.getString("Username"),
+                    rs.getString("Password"),
+                    rs.getString("FirstName"),
+                    rs.getString("LastName"),
+                    rs.getString("Gender")
+                );
+            }
+        }
+
+    } catch (SQLException ex) {
+
+        System.err.println(
+        "Error Staff Login: " + ex.getMessage());
     }
 
     return null;
